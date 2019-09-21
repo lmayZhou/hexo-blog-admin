@@ -1,0 +1,23 @@
+# Mysql 数据库
+mysql:
+  host: 192.168.0.10
+  port: 3306
+  user: root
+  password: root
+  database: hexo-blog-admin
+  charset: utf8mb4
+  SQLALCHEMY_TRACK_MODIFICATIONS: True
+
+# SqlLite 数据库
+sqlite:
+  SQLALCHEMY_TRACK_MODIFICATIONS: True
+  SQLALCHEMY_DATABASE_URI: app.db
+  SQLALCHEMY_MIGRATE_REPO: db_repository
+
+# MongoDB
+mongo:
+  MONGO_HOST: 192.168.0.10
+  MONGO_PORT: 27017
+  MONGO_USERNAME: lmayZhou
+  MONGO_PASSWORD: root
+  MONGO_DBNAME: lmay-blog

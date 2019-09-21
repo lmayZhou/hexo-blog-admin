@@ -1,0 +1,8 @@
+Dear {{ nickname }},
+
+    欢迎加入lmayZhou's Blog, 你的登陆帐号为: {{ email }}, 初始密码为: {{ password }}。 请及时登陆后台修改密码。
+    Website: www.lmaye.com/admin/login.html
+
+lmay Zhou,
+
+The lmayZhou's Blog admin

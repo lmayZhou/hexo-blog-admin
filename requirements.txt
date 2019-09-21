@@ -1,0 +1,14 @@
+flask
+pyyaml
+flask_wtf
+flask_sqlalchemy
+flask_mail
+flask-login==0.2.11
+flask_babel
+speaklater
+pycryptodome
+flask-redis
+Flask-PyMongo==0.5.2
+flask-rbac
+flask-marshmallow
+requests

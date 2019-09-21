@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- extend from header layout -->
+    {% include "common/header.html" %}
+    <link href="/static/plugins/iCheck/custom.css" rel="stylesheet">
+</head>
+
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight">
+    <!-- Panel Other -->
+    <div class="ibox float-e-margins">
+        <div class="ibox-content">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>{{ menu_name }} <small>菜单角色配置</small></h5>
+                            <div class="ibox-tools">
+
+                            </div>
+                        </div>
+                        <div class="ibox-content">
+                            <form class="form-horizontal" id="commentForm">
+                                <input type="hidden" id="csrf_token" name="csrf_token" value="{{ csrf_token() }}" />
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <ul id="rolesList">
+                                            {% if roles %}
+                                                {% for role in roles %}
+                                                <li class='col-sm-4' style="float: left; list-style: none;">
+                                                    <div class="checkbox i-checks">
+                                                        <label>
+                                                            <input name="{{ role.role_code }}" type="checkbox" value="{{ role.role_code }}"> <i></i> {{ role.role_name }} [{{ role.role_code }}]
+                                                        </label>
+                                                    </div>
+                                                </li>
+                                                {% endfor %}
+                                            {% else %}
+                                                <li class='col-sm-12' style='float: left; list-style: none;'>记录不存在...</li>
+                                            {% endif %}
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="checkbox i-checks">
+                                        <button id="submit" class="btn btn-primary " type="button">
+                                            <i class="fa fa-check"></i>&nbsp;Submit
+                                        </button>
+                                        <label>
+                                            <input name="checked-all" type="checkbox" value="all"> <i></i> 全选
+                                        </label>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Panel Other -->
+</div>
+</body>
+
+<!-- extend from script layout -->
+{% include "common/script.html" %}
+<!-- 自定义js -->
+<script src="/static/js/content.js?v=1.0.0"></script>
+<!-- Plug-in -->
+<script type="text/javascript" src="/static/plugins/iCheck/icheck.min.js"></script>
+<!-- Blog -->
+<script type="text/javascript">
+    var menu_code = "{{ menu_code if menu_code }}";
+    {% if menu_roles %}
+    var menu_roles = {{ menu_roles|tojson }};
+    {% else %}
+    var menu_roles = []
+    {% endif %}
+</script>
+<script src="/static/js/moment-with-locales.js"></script>
+<script src="/static/js/security/menu-roles.js"></script>
+</html>

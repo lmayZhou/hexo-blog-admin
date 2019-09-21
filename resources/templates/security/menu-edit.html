@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- extend from header layout -->
+    {% include "common/header.html" %}
+    <link href="/static/plugins/bootstrap-select/css/bootstrap-select.min.css" rel="stylesheet">
+</head>
+
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight">
+    <!-- Panel Other -->
+    <div class="row">
+        <div class="ibox float-e-margins">
+            <div class="ibox-content">
+                <form class="form-horizontal" id="commentForm">
+                    {{ form.hidden_tag() }}
+                    <input id="id" name="id" type="hidden" class="form-control" value="{{ menu.id if menu }}">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Menu Code：</label>
+                        <div class="col-sm-8">
+                            <input id="menu_code" name="menu_code" minlength="4" type="text" class="form-control" required="" aria-required="true" value="{{ menu.menu_code if menu }}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Parent Code：</label>
+                        <div class="col-sm-8">
+                            <select id="parent_code" name="parent_code" class="selectpicker form-control" data-live-search="true" data-live-search-placeholder="Search">
+                                <option value="0">Parent Menu</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Menu Name：</label>
+                        <div class="col-sm-8">
+                            <input id="menu_name" name="menu_name" minlength="2" type="text" class="form-control" required="" aria-required="true" value="{{ menu.menu_name if menu }}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Menu URL：</label>
+                        <div class="col-sm-8">
+                            <input id="menu_url" name="menu_url" type="text" class="form-control" required="" aria-required="true" value="{{ menu.menu_url if menu }}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Describe：</label>
+                        <div class="col-sm-8">
+                            <textarea id="describe" name="describe" class="form-control" required="" aria-required="true">{{ menu.describe if menu }}</textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-3 col-sm-8">
+                            <button id="btn-reset" type="button" class="btn btn-warning"><strong>Reset</strong></button>
+                            <button type="submit" class="btn btn-primary"><strong>Submit</strong></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- End Panel Other -->
+</div>
+</body>
+
+<!-- extend from script layout -->
+{% include "common/script.html" %}
+<!-- 自定义js -->
+<script src="/static/js/content.js?v=1.0.0"></script>
+<!-- jQuery Validation plugin javascript-->
+<script src="/static/plugins/validate/jquery.validate.min.js"></script>
+<script src="/static/plugins/validate/messages_es.js"></script>
+<!-- Bootstrap -->
+<script src="/static/plugins/bootstrap-select/js/bootstrap-select.min.js"></script>
+<script src="/static/plugins/bootstrap-select/js/i18n/defaults-zh_CN.min.js"></script>
+<!-- Blog -->
+<script>
+    var operation = "{{ operation if operation }}";
+    var parent_code = "{{ menu.parent_code if menu }}";
+</script>
+<script src="/static/js/moment-with-locales.js"></script>
+<script src="/static/js/security/menu-edit.js"></script>
+</html>

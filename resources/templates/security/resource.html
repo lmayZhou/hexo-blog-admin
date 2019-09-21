@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- extend from header layout -->
+    {% include "common/header.html" %}
+    <link href="/static/plugins/bootstrap-select/css/bootstrap-select.min.css" rel="stylesheet">
+    <link href="/static/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+</head>
+
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight">
+    <!-- Panel Other -->
+    <div class="ibox">
+        <div class="ibox-content">
+            <div class="row row-lg">
+                <div class="col-sm-12">
+                    <!-- Example Events -->
+                    <div class="example-wrap">
+                        <h4 class="example-title">Resource Manage</h4>
+                        <div class="example">
+                            <div class="search-form">
+                                <form role="form" class="form-inline">
+                                    <input type="hidden" id="csrf_token" name="csrf_token" value="{{ csrf_token() }}" />
+                                    <div class="form-group">
+                                        <label for="parent_code" class="sr-only">Parent Code</label>
+                                        <select class="selectpicker" data-live-search="true" data-live-search-placeholder="Search" id="parent_code" title="Please select a Parent Code ...">
+                                            <option value="">All Resource</option>
+                                            <option value="0">Parent Resource [0]</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="resource_code" class="sr-only">Resource Code</label>
+                                        <input type="text" placeholder="Resource Code" id="resource_code" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="resource_name" class="sr-only">Resource Name</label>
+                                        <input type="text" placeholder="Resource Name" id="resource_name" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <button id="search" class="btn btn-primary" type="button"> <i class="fa fa-search"></i> Search</button>
+                                        <button class="btn btn-warning" type="reset"> <i class="fa fa-repeat"></i> Reset</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="hr-line-dashed"></div>
+
+                            <div class="btn-group hidden-xs" id="exampleTableEventsToolbar" role="group">
+                                <button id="add" type="button" class="btn btn-outline btn-default">
+                                    <i class="glyphicon glyphicon-plus" aria-hidden="true"></i>
+                                </button>
+                                <button type="button" class="btn btn-outline btn-default">
+                                    <i class="glyphicon glyphicon-heart" aria-hidden="true"></i>
+                                </button>
+                                <button id="del" type="button" class="btn btn-outline btn-default">
+                                    <i class="glyphicon glyphicon-trash" aria-hidden="true"></i>
+                                </button>
+                            </div>
+
+                            <table id="exampleTableEvents" data-mobile-responsive="true">
+
+                            </table>
+                        </div>
+                    </div>
+                    <!-- End Example Events -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Panel Other -->
+</div>
+</body>
+
+<!-- extend from script layout -->
+{% include "common/script.html" %}
+<!-- 自定义js -->
+<script src="/static/js/content.js?v=1.0.0"></script>
+<!-- Bootstrap table -->
+<script src="/static/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="/static/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+<script src="/static/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script src="/static/plugins/bootstrap-select/js/bootstrap-select.min.js"></script>
+<script src="/static/plugins/bootstrap-select/js/i18n/defaults-zh_CN.min.js"></script>
+<!-- Blog -->
+<script src="/static/js/moment-with-locales.js"></script>
+<script src="/static/js/security/resource.js"></script>
+</html>

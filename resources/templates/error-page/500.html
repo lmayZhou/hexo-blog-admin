@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    {% if title %}
+    <title>lmayZhou Blog Admin - {{ _(title) }}</title>
+    {% else %}
+    <title>{{ _("Welcome to") }} lmayZhou Blog Admin</title>
+    {% endif %}
+    <meta name="description" content="overview &amp; stats"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+    <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" type="text/css" href="/static/css/cmstop-error.css" media="all">
+</head>
+
+<body style="background-color: #f3f1f1;">
+    <div class="main2">
+
+    </div>
+    <div style="width: 300px; height:auto;margin: 0px auto">
+        <a target="_parent" href="/admin/login.html" class="a1">返回网站首页</a>
+        <a href="javascript:history.back(-1);" class="a2">返回上一页</a>
+    </div>
+</body>
+</html>

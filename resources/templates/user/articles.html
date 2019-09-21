@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- extend from header layout -->
+    {% include "common/header.html" %}
+    <link href="/static/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+</head>
+
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight">
+    <!-- Panel Other -->
+    <div class="ibox float-e-margins">
+        <div class="ibox-content">
+            <div class="row row-lg">
+                <div class="col-sm-12">
+                    <!-- Example Events -->
+                    <div class="example-wrap">
+                        <h4 class="example-title">Article Manage</h4>
+                        <div class="example">
+                            <input type="hidden" id="csrf_token" name="csrf_token" value="{{ csrf_token() }}" />
+                            <div class="btn-group hidden-xs" id="exampleTableEventsToolbar" role="group">
+                                <button id="add" type="button" class="btn btn-outline btn-default">
+                                    <i class="glyphicon glyphicon-plus" aria-hidden="true"></i>
+                                </button>
+                                <button type="button" class="btn btn-outline btn-default">
+                                    <i class="glyphicon glyphicon-heart" aria-hidden="true"></i>
+                                </button>
+                                <button id="del" type="button" class="btn btn-outline btn-default">
+                                    <i class="glyphicon glyphicon-trash" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                            <table id="exampleTableEvents" data-mobile-responsive="true">
+
+                            </table>
+                        </div>
+                    </div>
+                    <!-- End Example Events -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Panel Other -->
+</div>
+</body>
+
+<!-- extend from script layout -->
+{% include "common/script.html" %}
+<!-- 自定义js -->
+<script src="/static/js/content.js?v=1.0.0"></script>
+<!-- Bootstrap table -->
+<script src="/static/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="/static/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+<script src="/static/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<!-- Blog -->
+<script>
+    var author = "{{ g.user.nickname }}"
+</script>
+<script src="/static/js/moment-with-locales.js"></script>
+<script src="/static/js/user/articles.js"></script>
+</html>

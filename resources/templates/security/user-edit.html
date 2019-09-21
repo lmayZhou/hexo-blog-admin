@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- extend from header layout -->
+    {% include "common/header.html" %}
+    <link href="/static/plugins/bootstrap-select/css/bootstrap-select.min.css" rel="stylesheet">
+</head>
+
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight">
+    <!-- Panel Other -->
+    <div class="row">
+        <div class="ibox float-e-margins">
+            <div class="ibox-content">
+                <form class="form-horizontal" id="commentForm">
+                    {{ form.hidden_tag() }}
+                    <input id="id" name="id" type="hidden" class="form-control" value="{{ user.id if user }}">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Nickname：</label>
+                        <div class="col-sm-8">
+                            <input id="nickname" name="nickname" minlength="2" type="text" class="form-control" required="" aria-required="true" value="{{ user.nickname if user }}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Sex：</label>
+                        <div class="col-sm-8">
+                            <select id="sex" name="sex" class="selectpicker form-control" title="Please select a Sex ...">
+                                <option value="0">未知</option>
+                                <option value="1">男</option>
+                                <option value="2">女</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Email：</label>
+                        <div class="col-sm-8">
+                            <input id="email" name="email" minlength="8" type="email" class="form-control" required="" aria-required="true" value="{{ user.email if user }}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">QQ：</label>
+                        <div class="col-sm-8">
+                            <input id="qq" name="qq" type="number" class="form-control" required="" aria-required="true" value="{{ user.qq if user }}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Icon：</label>
+                        <div class="col-sm-8">
+                            <input id="icon" name="icon" type="url" class="form-control" value="{{ user.icon if user }}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-3 col-sm-8">
+                            <button id="btn-reset" type="button" class="btn btn-warning"><strong>Reset</strong></button>
+                            <button type="submit" class="btn btn-primary"><strong>Submit</strong></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- End Panel Other -->
+</div>
+</body>
+
+<!-- extend from script layout -->
+{% include "common/script.html" %}
+<!-- 自定义js -->
+<script src="/static/js/content.js?v=1.0.0"></script>
+<!-- jQuery Validation plugin javascript-->
+<script src="/static/plugins/validate/jquery.validate.min.js"></script>
+<script src="/static/plugins/validate/messages_es.js"></script>
+<!-- Bootstrap -->
+<script src="/static/plugins/bootstrap-select/js/bootstrap-select.min.js"></script>
+<script src="/static/plugins/bootstrap-select/js/i18n/defaults-zh_CN.min.js"></script>
+<!-- Blog -->
+<script>
+    var operation = "{{ operation if operation }}";
+    var sex = "{{ user.sex if user }}";
+</script>
+<script src="/static/js/moment-with-locales.js"></script>
+<script src="/static/js/security/user-edit.js"></script>
+</html>

@@ -1,0 +1,61 @@
+####################################################
+#             >>> Blog 初始账户 <<<                #
+#            用户: lmay@lmaye.com                  #
+#            密码: root@123                        #
+####################################################
+server:
+  # sqlite/mysql/oracle
+  databases: sqlite
+  # 端口
+  port: 5000
+  # 服务器目录
+#  md_posts_path: /home/lmay/blog/hexo-blog/source/_posts
+#  md_about_path: /home/lmay/blog/hexo-blog/source/about
+  # 是否生成MD静态网页[本地测试 false]
+  is_generate: False
+  # Linux 生成脚本
+  shell_script_path: /home/lmay/blog/hexo-blog/hexo-blog.sh
+  # 本地测试目录
+  md_posts_path: E:\\Workspaces\\Python\\hexo-blog-admin\\resources\\source\\_posts
+  md_about_path: E:\\Workspaces\\Python\\hexo-blog-admin\\resources\\source\\about
+  # 密钥
+  PRIVATE_KEY: you guess
+  # 国际化
+  LANGUAGES: {
+                "en": "English",
+                "es": "Español",
+                "zh_cn": "zh-CN"
+              }
+
+flask:
+  wtf:
+    CSRF_ENABLED: True
+    SECRET_KEY: you-will-never-guess
+
+# mail server settings
+email:
+  MAIL_SERVER: smtp.163.com
+  MAIL_PORT: 994
+  MAIL_USE_TLS: False
+  MAIL_USE_SSL: True
+  MAIL_USERNAME: Your Email.
+  MAIL_PASSWORD: Yout Email Password.
+  # Administrator List
+  ADMINS: ["xxx@xxx.com"]
+
+# RBAC
+rbac:
+  whitelist:
+    URL_REGEX: "^{}$"
+    PASS_URL_LIST: [
+        "^/admin/login.html",
+        "^/admin/logout",
+        "^/static/",
+        "^/api",
+    ]
+
+# File API 文件储存服务(Java版)
+file-api:
+  upload: http://127.0.0.1:8080/api/file/upload
+  delete: http://127.0.0.1:8080/api/file/delete/<string:fileName>
+  localhost: https://www.xxx.com/
