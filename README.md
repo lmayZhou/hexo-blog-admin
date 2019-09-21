@@ -52,7 +52,7 @@
 ![Hexo Blog Admin](https://www.lmaye.com/group1/M00/00/00/CmiBTl1K9TKAYEd8AACaQc7nGPU158.png "Hexo Blog Admin")
 
 &emsp;&emsp;系统应用基于Python Flask框架开发，系统访问权限控制使用的RBAC实现，国际化由于时间关系所以也没有实现，博客基本需求是完全可以满足的。   
-文件存储服务没有使用第三方服务，而是自己搭建了FastDFS文件服务系统，因为Python调用FastDFS存在各种问题，从而采用的Java编写的API服务（由于存在个人隐私，源码陆续开放，敬请期待），TODO: 后续也会继续优化支持多种方式。   
+文件存储服务没有使用第三方服务，而是自己搭建了FastDFS文件服务系统，因为Python调用FastDFS存在各种问题，从而采用的Java编写的API服务（TODO: 后续也会继续优化支持多种方式）。   
 前端采用的Markdown插件，编辑完成后会生成MD文件，MongoDB仅仅存储文章的基本信息和路径，不会去存储文章内容；同时也支持MongoDB数据恢复，故MongoDB服务挂了造成数据丢失也不必担心；   
 Security系统管理数据存储在Sqlite DB中，之所以采用Sqlite是因为这部分数据量不是很大，仅仅存储用户、菜单、资源、权限等数据；
 其他细节部分，大家可以自己参考源码；
