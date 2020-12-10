@@ -54,6 +54,7 @@ rbac:
         "^/api",
     ]
 
+# TODO 接下来将调整, 新增MinIO
 # File API 文件储存服务(Java版)
 file-api:
   upload: http://127.0.0.1:8080/api/file/upload
