@@ -14,4 +14,4 @@ from core.constant.sys_enum import SysEnum
 
 def logger():
     logging.config.fileConfig(SysEnum.LOGGING_PATH.value)
-    return logging.getLogger("example01")
+    return logging.getLogger("hexo-blog-admin")
