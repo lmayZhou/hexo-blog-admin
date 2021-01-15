@@ -10,5 +10,6 @@
 # Date: 
 # ----------------------------------------------------------
 from core.logger.log import logger
+
 # 日志
 LOG = logger()
