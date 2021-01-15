@@ -1,0 +1,23 @@
+version: "3"
+services:
+  minio:
+    # 容器名称
+    container_name: lmay-minio
+    # 镜像:版本
+    image: minio/minio:latest
+    # 重启机制
+    # -- no: 禁止自动重启容器(默认);
+    # -- always: 无论如何容器都会重启;
+    # -- on-failure: 当出现on-failure报错时, 容器重新启动;
+    restart: on-failure
+    command: server /data
+    # 端口
+    ports:
+      - 9000:9000
+    environment:
+      MINIO_ACCESS_KEY: minio
+      MINIO_SECRET_KEY: minio123
+    # 持久化挂载
+    volumes:
+      - ./data:/data
+      - ./conf:/root/.minio

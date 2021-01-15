@@ -41,7 +41,7 @@ def read_yml(path=None):
     """
     if path:
         with open(path, "r", encoding="UTF-8") as yml:
-            return yaml.load(yml.read())
+            return yaml.load(yml.read(), yaml.Loader)
     else:
         LOG.error("yml config file path is None ...")
         return None

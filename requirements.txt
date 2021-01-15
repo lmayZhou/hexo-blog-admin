@@ -8,7 +8,9 @@ flask_babel
 speaklater
 pycryptodome
 flask-redis
-Flask-PyMongo==0.5.2
+Flask-PyMongo
 flask-rbac
 flask-marshmallow
 requests
+email_validator
+Flask-Minio

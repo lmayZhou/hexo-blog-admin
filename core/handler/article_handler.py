@@ -33,6 +33,7 @@ def load_articles(param):
     try:
         total = mongo_db.db.articles.find().count()
         if total <= 0:
+            # 如果mongo中没有，就去加载目录文件
             articles = load_files(application["server"]["md_posts_path"])
             total = len(articles)
             mongo_db.db.articles.insert_many(articles)

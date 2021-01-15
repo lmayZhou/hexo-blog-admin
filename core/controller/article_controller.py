@@ -174,6 +174,7 @@ def img_upload():
 
         :return: Markdown 格式
     """
+    file_api = application["file-api"]
     data = {"enctype": "multipart/form-data"}
     headers = {
         "Authorization": "Token",
@@ -182,8 +183,8 @@ def img_upload():
     }
     image_file = request.files['editormd-image-file']
     files = {"file": (image_file.filename, image_file)}
-    response = requests.post(application["file-api"]["upload"], data=data, headers=headers, files=files)
+    response = requests.post(file_api["fastdfs"]["upload"], data=data, headers=headers, files=files)
     rs = json.loads(response.content.decode("UTF-8"))
     if 200 != response.status_code or 200 != rs["code"]:
         return jsonify({"success": 0, "message": rs["message"], "url": ""})
-    return jsonify({"success": 1, "message": rs["msg"], "url": application["file-api"]["localhost"] + rs["data"]})
+    return jsonify({"success": 1, "message": rs["msg"], "url": file_api["fastdfs"]["localhost"] + rs["data"]})

@@ -68,6 +68,7 @@ pip3 install flask_sqlalchemy
 pip3 install flask_mail
 pip3 install flask-login==0.2.11
 pip3 install flask_babel
+pip3 install email_validator
 # 翻译lazy字符串
 pip3 install speaklater
 # Crypto 加密
@@ -75,12 +76,14 @@ pip3 install pycryptodome
 # Redis
 pip3 install flask-redis
 # MongoDB
-pip3 install Flask-PyMongo==0.5.2
+pip3 install Flask-PyMongo
 # RABC 权限框架
 pip3 install flask-rbac
 pip3 install flask-marshmallow
 # 接口请求
 pip3 install requests
+# MinIo文件存储
+pip3 install Flask-Minio
 ```
    
    2. 解决安装pycryptodome加密插件引入的问题，\Lib\site-packages\crypto(crypto默认是小写，改成大写即可Crypto)
