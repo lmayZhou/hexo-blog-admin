@@ -16,8 +16,8 @@ server:
   # Linux 生成脚本
   shell_script_path: /home/lmay/blog/hexo-blog/hexo-blog.sh
   # 本地测试目录
-  md_posts_path: E:\workspace\Python\hexo-blog-admin\resources\source\_posts
-  md_about_path: E:\workspace\Python\hexo-blog-admin\resources\source\about
+  md_posts_path: E:\Workspaces\Python\hexo-blog-admin\resources\source\_posts
+  md_about_path: E:\Workspaces\Python\hexo-blog-admin\resources\source\about
   # 密钥
   PRIVATE_KEY: you guess
   # 国际化
@@ -60,11 +60,12 @@ file-api:
   fastdfs:
     upload: http://127.0.0.1:8080/api/file/upload
     delete: http://127.0.0.1:8080/api/file/delete/<string:fileName>
-    localhost: https://www.xxx.com/
+    localhost: https://www.lmaye.com/
   # MinIO
   minio:
     # 对象存储服务的URL
-    MINIO_ENDPOINT: http://192.168.30.180:9000
+#    MINIO_ENDPOINT: http://192.168.30.180:9000
+    MINIO_ENDPOINT: http://192.168.0.10:9000
     # Access key是唯一标识你的账户的用户ID
     MINIO_ACCESS_KEY: minio
     # Secret key是你账户的密码
