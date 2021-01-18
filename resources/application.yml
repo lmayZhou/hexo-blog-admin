@@ -58,7 +58,7 @@ rbac:
 
 # 文件储存服务
 file-api:
-  # 访问服务地址
+  # 访问服务地址(Nginx 配置访问资源)
   localhost: https://www.lmaye.com/
   # FastDFS [Java]
   fastdfs:
