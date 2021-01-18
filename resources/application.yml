@@ -6,6 +6,8 @@
 server:
   # sqlite/mysql/oracle
   databases: sqlite
+  # 使用 minio 文件存储服务
+  use_file_api: minio
   # 端口
   port: 5000
   # 服务器目录
@@ -16,8 +18,8 @@ server:
   # Linux 生成脚本
   shell_script_path: /home/lmay/blog/hexo-blog/hexo-blog.sh
   # 本地测试目录
-  md_posts_path: E:\Workspaces\Python\hexo-blog-admin\resources\source\_posts
-  md_about_path: E:\Workspaces\Python\hexo-blog-admin\resources\source\about
+  md_posts_path: E:\workspace\Python\hexo-blog-admin\resources\source\_posts
+  md_about_path: E:\workspace\Python\hexo-blog-admin\resources\source\about
   # 密钥
   PRIVATE_KEY: you guess
   # 国际化
@@ -56,19 +58,24 @@ rbac:
 
 # 文件储存服务
 file-api:
+  # 访问服务地址
+  localhost: https://www.lmaye.com/
   # FastDFS [Java]
   fastdfs:
     upload: http://127.0.0.1:8080/api/file/upload
     delete: http://127.0.0.1:8080/api/file/delete/<string:fileName>
-    localhost: https://www.lmaye.com/
   # MinIO
   minio:
     # 对象存储服务的URL
-#    MINIO_ENDPOINT: http://192.168.30.180:9000
-    MINIO_ENDPOINT: http://192.168.0.10:9000
-    # Access key是唯一标识你的账户的用户ID
+    MINIO_ENDPOINT: 192.168.30.180:9000
+#    MINIO_ENDPOINT: 192.168.0.10:9000
+    # Access key 是唯一标识你的账户的用户ID
     MINIO_ACCESS_KEY: minio
-    # Secret key是你账户的密码
+    # Secret key 是你账户的密码
     MINIO_SECRET_KEY: minio123
-    # true代表使用HTTPS
-    MINIO_SECURE: false
+    # True 代表使用HTTPS
+    MINIO_SECURE: False
+    # 存储桶名称
+    BUCKET_NAME: lmay-blog
+    # Multipart part size: 10M(10 * 1024 * 1024)
+    PART_SIZE: 10485760

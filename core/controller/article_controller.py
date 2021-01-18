@@ -10,10 +10,12 @@
 # Date: 2018/4/20 0:40 星期五
 # ----------------------------------------------------------
 import time
+
 import requests
 from flask import render_template, jsonify, request, json
 from flask_login import login_required
-from core.app import app, application, csrf
+
+from core.app import app, csrf, use_file_api, api_conf, minio_storage, file_api
 from core.constant.response_dto import ResponseDTO
 from core.constant.response_enum import ResponseEnum
 from core.forms.md_editor_forms import MDEditorForm
@@ -87,7 +89,8 @@ def article_edit():
         _file_name = time.strftime('%Y%m%d%H%M%S', time.localtime())
     article_handler.edit_article(editor_txt, _file_name)
     success_value = ResponseEnum.SUCCESS.value
-    return jsonify(ResponseDTO(code=success_value["code"], msg=success_value["msg"], data="/admin/articles.html").__dict__)
+    return jsonify(
+        ResponseDTO(code=success_value["code"], msg=success_value["msg"], data="/admin/articles.html").__dict__)
 
 
 @app.route("/admin/article/delete", methods=["POST"])
@@ -174,17 +177,33 @@ def img_upload():
 
         :return: Markdown 格式
     """
-    file_api = application["file-api"]
-    data = {"enctype": "multipart/form-data"}
-    headers = {
-        "Authorization": "Token",
-        "Client-ID": "www.lmaye.com",
-        "User-Name": "lmayZhou"
-    }
+    url = ""
     image_file = request.files['editormd-image-file']
-    files = {"file": (image_file.filename, image_file)}
-    response = requests.post(file_api["fastdfs"]["upload"], data=data, headers=headers, files=files)
-    rs = json.loads(response.content.decode("UTF-8"))
-    if 200 != response.status_code or 200 != rs["code"]:
-        return jsonify({"success": 0, "message": rs["message"], "url": ""})
-    return jsonify({"success": 1, "message": rs["msg"], "url": file_api["fastdfs"]["localhost"] + rs["data"]})
+    filename = image_file.filename
+    if "fastdfs" == use_file_api:
+        # FastDFS (Java)
+        data = {"enctype": "multipart/form-data"}
+        headers = {
+            "Authorization": "Token",
+            "Client-ID": "www.lmaye.com",
+            "User-Name": "lmayZhou"
+        }
+        files = {"file": (filename, image_file)}
+        response = requests.post(api_conf["upload"], data=data, headers=headers, files=files)
+        rs = json.loads(response.content.decode("UTF-8"))
+        if 200 != response.status_code or 200 != rs["code"]:
+            return jsonify({"success": 0, "message": rs["message"], "url": url})
+        # 返回图片访问地址
+        url = file_api["localhost"] + rs["data"]
+    elif "minio" == use_file_api:
+        # Minio (Python Client)
+        bucket_name = api_conf["BUCKET_NAME"]
+        if not minio_storage.connection.bucket_exists(bucket_name):
+            # 如果存储桶不存在，则创建
+            minio_storage.connection.make_bucket(bucket_name)
+        # 最大限制10M
+        rs = minio_storage.connection.put_object(bucket_name, filename, image_file, length=-1,
+                                                 part_size=api_conf["PART_SIZE"])
+        # 返回图片访问地址 https://www.lmaye.com/lmay-blog/logo.png
+        url = file_api["localhost"] + rs.bucket_name + "/" + rs.object_name
+    return jsonify({"success": 1, "message": "success", "url": url})
