@@ -10,6 +10,8 @@
 # Date: 2018/4/20 0:40 星期五
 # ----------------------------------------------------------
 import time
+import uuid
+from pathlib import Path
 
 import requests
 from flask import render_template, jsonify, request, json
@@ -202,8 +204,9 @@ def img_upload():
             # 如果存储桶不存在，则创建
             minio_storage.connection.make_bucket(bucket_name)
         # 最大限制10M
-        rs = minio_storage.connection.put_object(bucket_name, filename, image_file, length=-1, content_type="image/png",
-                                                 part_size=api_conf["PART_SIZE"])
-        # 返回图片访问地址 http://192.168.30.180/files/hexo-blog/1.png
+        suffix = Path(filename).suffix
+        rs = minio_storage.connection.put_object(bucket_name, str(uuid.uuid4()) + suffix, image_file, length=-1,
+                                                 content_type="image/png", part_size=api_conf["PART_SIZE"])
+        # 返回图片访问地址 http://192.168.30.180/files/hexo-blog/287872bb-f461-4abe-8ce0-aaac09db1633.png
         url = file_api["localhost"] + "files/" + rs.bucket_name + "/" + rs.object_name
     return jsonify({"success": 1, "message": "success", "url": url})
