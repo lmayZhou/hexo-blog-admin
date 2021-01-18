@@ -59,7 +59,7 @@ rbac:
 # 文件储存服务
 file-api:
   # 访问服务地址(Nginx 配置访问资源)
-  localhost: https://www.lmaye.com/
+  localhost: http://192.168.30.180/
   # FastDFS [Java]
   fastdfs:
     upload: http://127.0.0.1:8080/api/file/upload
@@ -70,12 +70,12 @@ file-api:
     MINIO_ENDPOINT: 192.168.30.180:9000
 #    MINIO_ENDPOINT: 192.168.0.10:9000
     # Access key 是唯一标识你的账户的用户ID
-    MINIO_ACCESS_KEY: minio
+    MINIO_ACCESS_KEY: admin
     # Secret key 是你账户的密码
-    MINIO_SECRET_KEY: minio123
+    MINIO_SECRET_KEY: YouGuess
     # True 代表使用HTTPS
     MINIO_SECURE: False
     # 存储桶名称
-    BUCKET_NAME: lmay-blog
+    BUCKET_NAME: hexo-blog
     # Multipart part size: 10M(10 * 1024 * 1024)
     PART_SIZE: 10485760

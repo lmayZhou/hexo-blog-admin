@@ -16,5 +16,4 @@ sqlite:
 
 # MongoDB
 mongo:
-  MONGO_URI: mongodb://lmaye:root@192.168.30.180:27017/lmay-blog?authSource=admin
-#  MONGO_URI: mongodb://admin:root@192.168.0.10:27017/lmay-blog?authSource=admin
+  MONGO_URI: mongodb://admin:YouGuess@192.168.30.180:27017/hexo-blog?authSource=admin

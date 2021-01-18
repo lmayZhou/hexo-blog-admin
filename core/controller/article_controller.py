@@ -204,6 +204,6 @@ def img_upload():
         # 最大限制10M
         rs = minio_storage.connection.put_object(bucket_name, filename, image_file, length=-1, content_type="image/png",
                                                  part_size=api_conf["PART_SIZE"])
-        # 返回图片访问地址 https://www.lmaye.com/lmay-blog/logo.png
-        url = file_api["localhost"] + rs.bucket_name + "/" + rs.object_name
+        # 返回图片访问地址 http://192.168.30.180/files/hexo-blog/logo.png
+        url = file_api["localhost"] + "files/" + rs.bucket_name + "/" + rs.object_name
     return jsonify({"success": 1, "message": "success", "url": url})
