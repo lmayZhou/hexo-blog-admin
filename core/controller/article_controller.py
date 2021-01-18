@@ -202,7 +202,7 @@ def img_upload():
             # 如果存储桶不存在，则创建
             minio_storage.connection.make_bucket(bucket_name)
         # 最大限制10M
-        rs = minio_storage.connection.put_object(bucket_name, filename, image_file, length=-1,
+        rs = minio_storage.connection.put_object(bucket_name, filename, image_file, length=-1, content_type="image/png",
                                                  part_size=api_conf["PART_SIZE"])
         # 返回图片访问地址 https://www.lmaye.com/lmay-blog/logo.png
         url = file_api["localhost"] + rs.bucket_name + "/" + rs.object_name
