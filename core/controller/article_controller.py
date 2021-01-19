@@ -195,7 +195,7 @@ def img_upload():
         rs = json.loads(response.content.decode("UTF-8"))
         if 200 != response.status_code or 200 != rs["code"]:
             return jsonify({"success": 0, "message": rs["message"], "url": url})
-        # 返回图片访问地址
+        # 图片访问地址 https://www.lmaye.com/group1/M00/00/00/CmiBTluP-8GAes_5AAMzxsx8Slw711.jpg
         url = file_api["localhost"] + rs["data"]
     elif "minio" == use_file_api:
         # Minio (Python Client)
@@ -207,6 +207,6 @@ def img_upload():
         suffix = Path(filename).suffix
         rs = minio_storage.connection.put_object(bucket_name, str(uuid.uuid4()) + suffix, image_file, length=-1,
                                                  content_type="image/png", part_size=api_conf["PART_SIZE"])
-        # 返回图片访问地址 http://192.168.30.180/files/hexo-blog/287872bb-f461-4abe-8ce0-aaac09db1633.png
+        # 图片访问地址 http://192.168.30.180/files/hexo-blog/287872bb-f461-4abe-8ce0-aaac09db1633.png
         url = file_api["localhost"] + "files/" + rs.bucket_name + "/" + rs.object_name
     return jsonify({"success": 1, "message": "success", "url": url})
