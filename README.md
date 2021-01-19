@@ -41,6 +41,7 @@
             databases.yml                   # 数据库配置文件
             logging.conf                    # 日志配置文件
         - bin                               # 执行脚本[可忽略]
+        - docker                            # Docker部署脚本
         - logs                              # 日志目录
         hexo-blog.sh                        # 生成静态页面脚本
         hexo-blog-admin.ini                 # uwsgi配置文件（web服务器）
@@ -53,12 +54,13 @@
 ![Hexo Blog Admin](https://www.lmaye.com/group1/M00/00/00/CmiBTl1K9TKAYEd8AACaQc7nGPU158.png "Hexo Blog Admin")
 
 &emsp;&emsp;系统应用基于Python Flask框架开发，系统访问权限控制使用的RBAC实现，国际化由于时间关系所以也没有实现，博客基本需求是完全可以满足的。   
-文件存储服务没有使用第三方服务，而是自己搭建了FastDFS文件服务系统，因为Python调用FastDFS存在各种问题，从而采用的Java编写的API服务（TODO: 后续也会继续优化支持多种方式）。   
+文件存储服务没有使用第三方服务，而是自己搭建了FastDFS/MinIO文件服务系统。推荐使用MinIO，因为Python可以很好的支持。   
 前端采用的Markdown插件，编辑完成后会生成MD文件，MongoDB仅仅存储文章的基本信息和路径，不会去存储文章内容；同时也支持MongoDB数据恢复，故MongoDB服务挂了造成数据丢失也不必担心；   
 Security系统管理数据存储在Sqlite DB中，之所以采用Sqlite是因为这部分数据量不是很大，仅仅存储用户、菜单、资源、权限等数据；
 其他细节部分，大家可以自己参考源码；
 
 ### 注意事项
+#### 常规部署
    1. 安装项目集成插件
 ```shell
 pip3 install flask
@@ -101,6 +103,9 @@ uwsgi --ini hexo-blog-admin.ini
 ps aux | grep uwsgi
 # 停止项目
 killall -9 uwsgi
+
+#### Docker部署
+
 ```
 
 ### 参与贡献
@@ -108,6 +113,7 @@ killall -9 uwsgi
 2. 2018年09月05日: 完成项目
 3. 2018年11月11日: 首页添加时间轴
 4. 2019年08月07日: 更新 README.md [文档]
+5. 2021年01月19日: 添加MinIO文件存储服务、Docker部署项目
 
 ### 相关文章
 #### 『 Hexo 相关资料』
