@@ -4,8 +4,8 @@ services:
     build: ./hexo-blog-admin
     container_name: hexo-blog-admin
     restart: on-failure
-    command: uwsgi --ini /webapp/hexo-blog-admin.ini
-    working_dir: /webapp
+#    command: uwsgi --ini /webapp/hexo-blog-admin.ini
+#    working_dir: /webapp
     ports:
       - 5000:5000
     volumes:
