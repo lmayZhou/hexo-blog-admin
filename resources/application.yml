@@ -10,16 +10,16 @@ server:
   use_file_api: minio
   # 端口
   port: 5000
-  # 服务器目录
-#  md_posts_path: /home/lmay/blog/hexo-blog/source/_posts
-#  md_about_path: /home/lmay/blog/hexo-blog/source/about
   # 是否生成MD静态网页[本地测试 false]
-  is_generate: False
+  is_generate: True
   # Linux 生成脚本
-  shell_script_path: /home/lmay/blog/hexo-blog/hexo-blog.sh
-  # 本地测试目录
-  md_posts_path: E:\workspace\Python\hexo-blog-admin\resources\source\_posts
-  md_about_path: E:\workspace\Python\hexo-blog-admin\resources\source\about
+  shell_script_path: /home/services/hexo-blog/hexo-blog-admin/hexo-blog.sh
+  # Linux目录
+  md_posts_path: /home/services/hexo-blog/hexo-blog-admin/resources/source/_posts
+  md_about_path: /home/services/hexo-blog/hexo-blog-admin/resources/source/about
+  # Windows目录
+#  md_posts_path: E:\workspace\Python\hexo-blog-admin\resources\source\_posts
+#  md_about_path: E:\workspace\Python\hexo-blog-admin\resources\source\about
   # 密钥
   PRIVATE_KEY: you guess
   # 国际化

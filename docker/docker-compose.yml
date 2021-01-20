@@ -4,6 +4,7 @@ services:
     build: ./hexo-blog-admin
     container_name: hexo-blog-admin
     restart: on-failure
+    # uwsgi 部署
     command: uwsgi --ini hexo-blog-admin.ini
     ports:
       - 5000:5000
