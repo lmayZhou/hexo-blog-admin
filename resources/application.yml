@@ -67,8 +67,7 @@ file-api:
   # MinIO
   minio:
     # 对象存储服务的URL
-    MINIO_ENDPOINT: 192.168.30.180:9000
-#    MINIO_ENDPOINT: 192.168.0.10:9000
+    MINIO_ENDPOINT: 127.0.0.1:9000
     # Access key 是唯一标识你的账户的用户ID
     MINIO_ACCESS_KEY: admin
     # Secret key 是你账户的密码
