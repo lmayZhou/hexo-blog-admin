@@ -7,5 +7,5 @@ WORKDIR /webapp
 ADD . /webapp
 #RUN apk add --no-cache gcc musl-dev linux-headers
 # 安装模块
-RUN pip3 install -r requirements.txt
+RUN pip3 install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple/
 #CMD [ "uwsgi", "--ini", "hexo-blog-admin.ini" ]
