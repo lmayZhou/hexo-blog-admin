@@ -58,8 +58,8 @@ rbac:
 
 # 文件储存服务
 file-api:
-  # 访问服务地址(Nginx 配置访问资源)
-  localhost: http://192.168.30.180/
+  # 访问资源地址(Nginx 配置访问资源)
+  localhost: http://192.168.0.10/
   # FastDFS [Java]
   fastdfs:
     upload: http://127.0.0.1:8080/api/file/upload
