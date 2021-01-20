@@ -11,12 +11,12 @@ server:
   # 端口
   port: 5000
   # 是否生成MD静态网页[本地测试 false]
-  is_generate: True
-  # Linux 生成脚本
-  shell_script_path: /home/services/hexo-blog/hexo-blog-admin/hexo-blog.sh
-  # Linux目录
-  md_posts_path: /home/services/hexo-blog/hexo-blog-admin/resources/source/_posts
-  md_about_path: /home/services/hexo-blog/hexo-blog-admin/resources/source/about
+  is_generate: False
+  # Linux 生成脚本(docker 容器内目录)
+  shell_script_path: /webapp/hexo-blog.sh
+  # Linux目录(docker 容器内目录)
+  md_posts_path: /webapp/resources/source/_posts
+  md_about_path: /webapp/resources/source/about
   # Windows目录
 #  md_posts_path: E:\workspace\Python\hexo-blog-admin\resources\source\_posts
 #  md_about_path: E:\workspace\Python\hexo-blog-admin\resources\source\about

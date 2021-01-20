@@ -10,6 +10,10 @@ services:
       - 5000:5000
     volumes:
       - ./hexo-blog-admin:/webapp
+      # 文章目录映射(eg: /home/services/hexo-blog/hexo-blog-admin/resources/source/_posts)
+      - ./hexo-blog-admin/resources/source/_posts:/webapp/resources/source/_posts
+      # 关于我
+      - ./hexo-blog-admin/resources/source/about:/webapp/resources/source/about
 
   nginx:
     container_name: blog-nginx
@@ -50,6 +54,8 @@ services:
     container_name: blog-mongo
     image: mongo:4.4.3
     restart: on-failure
+    ports:
+      - 27017:27017
     environment:
       - MONGO_DATA_DIR=/data/db
       - MONGO_LOG_DIR=/data/logs
@@ -58,5 +64,3 @@ services:
     volumes:
       - ./mongo/data:/data/db
       - ./mongo/logs:/data/logs
-    ports:
-      - 27017:27017
