@@ -3,7 +3,7 @@ mysql:
   host: 192.168.0.10
   port: 3306
   user: root
-  password: YouGuess
+  password: root
   database: hexo-blog-admin
   charset: utf8mb4
   SQLALCHEMY_TRACK_MODIFICATIONS: True
