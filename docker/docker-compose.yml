@@ -1,19 +1,20 @@
 version: "3"
 services:
-  webapp:
-    build: ./hexo-blog-admin
-    container_name: hexo-blog-admin
-    restart: on-failure
-    # uwsgi 部署
-    command: uwsgi --ini hexo-blog-admin.ini
-    ports:
-      - 5000:5000
-    volumes:
-      - ./hexo-blog-admin:/webapp
-      # 文章目录映射(eg: /home/services/hexo-blog/hexo-blog-admin/resources/source/_posts)
-      - ./hexo-blog-admin/resources/source/_posts:/webapp/resources/source/_posts
-      # 关于我
-      - ./hexo-blog-admin/resources/source/about:/webapp/resources/source/about
+# 项目docker部署内部需调Linux脚本生成静态网页比较麻烦，故手动部署在服务器上
+#  webapp:
+#    build: ./hexo-blog-admin
+#    container_name: hexo-blog-admin
+#    restart: on-failure
+#    # uwsgi 部署
+#    command: uwsgi --ini hexo-blog-admin.ini
+#    ports:
+#      - 5000:5000
+#    volumes:
+#      - ./hexo-blog-admin:/webapp
+#      # 文章目录映射(eg: /home/services/hexo-blog/hexo-blog-admin/resources/source/_posts)
+#      - ./hexo-blog-admin/resources/source/_posts:/webapp/resources/source/_posts
+#      # 关于我
+#      - ./hexo-blog-admin/resources/source/about:/webapp/resources/source/about
 
   nginx:
     container_name: blog-nginx
