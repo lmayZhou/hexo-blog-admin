@@ -42,6 +42,9 @@
             logging.conf                    # 日志配置文件
         - bin                               # 执行脚本[可忽略]
         - docker                            # Docker部署脚本
+            -- docker-compose.yml           # Docker Compose
+            -- init.sh                      # Shell脚本
+            -- nginx.conf                   # nginx配置
         - logs                              # 日志目录
         hexo-blog.sh                        # 生成静态页面脚本
         hexo-blog-admin.ini                 # uwsgi配置文件（web服务器）
