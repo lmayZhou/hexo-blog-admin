@@ -16,7 +16,7 @@ from minio import Minio
 
 # access_key: MinIo帐号
 # secret_key: MinIo密码
-minio_storage = Minio("192.168.30.180:9000", access_key='admin', secret_key='YouGuess', secure=False)
+minio_storage = Minio("192.168.30.180:9000", access_key="admin", secret_key="YouGuess", secure=False)
 images = sys.argv[1:]
 for image in images:
     print("File Uploading ...")
