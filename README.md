@@ -86,26 +86,33 @@ pip3 install flask-marshmallow
 pip3 install requests
 # MinIo文件存储
 pip3 install Flask-Minio
+pip3 install uWSGI==2.0.18
 ```
    
    2. 解决安装pycryptodome加密插件引入的问题，\Lib\site-packages\crypto(crypto默认是小写，改成大写即可Crypto)
    
-   3. [完善] 批量安装
+   3. 批量安装
 ```shell
 pip3 install -r requirements.txt
 ```
    
    4. 项目启动命令
 ```shell
-# 启动项目
-uwsgi --ini hexo-blog-admin.ini
+# Docker部署依赖服务
+[root@localhost hexo-blog]# ls
+# 相关文件
+-rw-r--r--. 1 root root 1568 Jan 20 18:16 docker-compose.yml
+-rwxr-xr-x. 1 root root 1555 Jan 19 16:07 init.sh
+-rw-r--r--. 1 root root 3941 Jan 20 18:39 nginx.conf
+# 部署命令
+[root@localhost hexo-blog]# ./init.sh 
+
+# 启动Python项目
+[root@localhost hexo-blog]# uwsgi --ini hexo-blog-admin.ini
 # 查看进程
-ps aux | grep uwsgi
+[root@localhost hexo-blog]# ps aux | grep uwsgi
 # 停止项目
-killall -9 uwsgi
-
-#### Docker部署
-
+[root@localhost hexo-blog]# killall -9 uwsgi
 ```
 
 ### 参与贡献
