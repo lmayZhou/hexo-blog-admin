@@ -1,0 +1,14 @@
+[Unit]
+Description=hexo-blog-admin
+After=syslog.target network.target remote-fs.target nss-lookup.target
+
+[Service]
+Type=forking
+
+ExecStart=/usr/bin/uwsgi -d --ini /home/lmay/services/blog/hexo-blog-admin/hexo-blog-admin.ini
+ExecStop=killall -9 uwsgi
+Restart=always
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
