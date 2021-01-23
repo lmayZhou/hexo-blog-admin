@@ -113,7 +113,7 @@ After=syslog.target network.target remote-fs.target nss-lookup.target
 [Service]
 Type=forking
 # 启动uwsgi(/home/lmay/services/blog/hexo-blog-admin/hexo-blog-admin.ini 脚本根据自己实际位置调整)
-ExecStart=/usr/bin/uwsgi -d --ini /home/lmay/services/blog/hexo-blog-admin/hexo-blog-admin.ini
+ExecStart=/usr/bin/uwsgi /home/lmay/services/blog/hexo-blog-admin/hexo-blog-admin.ini
 # 停止uwsgi
 ExecStop=killall -9 uwsgi
 Restart=always
