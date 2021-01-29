@@ -19,12 +19,15 @@ services:
   nginx:
     container_name: blog-nginx
     image: nginx:1.16
-    restart: on-failure
+    restart: always
     ports:
       - 80:80
       - 443:443
     volumes:
       - ./nginx/www:/usr/share/nginx/html
+      - ./nginx/conf/conf.d:/etc/nginx/conf.d
+      # https证书路径
+      - ./nginx/conf/ssl:/etc/nginx/ssl
       - ./nginx/conf/nginx.conf:/etc/nginx/nginx.conf
       - ./nginx/logs:/var/log/nginx
 
@@ -37,7 +40,7 @@ services:
     # -- no: 禁止自动重启容器(默认);
     # -- always: 无论如何容器都会重启;
     # -- on-failure: 当出现on-failure报错时, 容器重新启动;
-    restart: on-failure
+    restart: always
     command: server /data
     # 端口
     ports:
@@ -54,7 +57,7 @@ services:
   mongodb:
     container_name: blog-mongo
     image: mongo:4.4.3
-    restart: on-failure
+    restart: always
     ports:
       - 27017:27017
     environment:

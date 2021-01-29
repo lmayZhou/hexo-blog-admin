@@ -111,7 +111,7 @@ pip3 install -r requirements.txt
 [root@localhost hexo-blog]# ./init.sh 
 
 # 启动Python项目
-[root@localhost hexo-blog]# uwsgi --ini hexo-blog-admin.ini
+[root@localhost hexo-blog]# uwsgi -d --ini hexo-blog-admin.ini
 # 查看进程
 [root@localhost hexo-blog]# ps aux | grep uwsgi
 # 停止项目

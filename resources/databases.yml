@@ -16,6 +16,8 @@ sqlite:
 
 # MongoDB
 mongo:
-  # 使用容器名称访问(Docker部署)
+  # 使用容器名称访问
+  # Docker部署
 #  MONGO_URI: mongodb://admin:YouGuess@blog-mongo:27017/hexo-blog?authSource=admin
-  MONGO_URI: mongodb://admin:YouGuess@127.0.0.1:27017/hexo-blog?authSource=admin
+  # 宿主机部署
+  MONGO_URI: mongodb://admin:YouGuess@192.168.0.10:27017/hexo-blog?authSource=admin

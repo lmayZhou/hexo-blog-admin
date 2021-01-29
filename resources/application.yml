@@ -15,11 +15,11 @@ server:
   # Linux 生成脚本
   shell_script_path: /home/lmay/blog/hexo-blog/hexo-blog.sh
   # Linux目录
-  md_posts_path: /home/lmay/blog/hexo-blog/source/_posts
-  md_about_path: /home/lmay/blog/hexo-blog/source/about
+#  md_posts_path: /home/lmay/blog/hexo-blog/source/_posts
+#  md_about_path: /home/lmay/blog/hexo-blog/source/about
   # Windows目录
-#  md_posts_path: E:\workspace\Python\hexo-blog-admin\resources\source\_posts
-#  md_about_path: E:\workspace\Python\hexo-blog-admin\resources\source\about
+  md_posts_path: E:\Workspaces\Python\hexo-blog-admin\resources\source\_posts
+  md_about_path: E:\Workspaces\Python\hexo-blog-admin\resources\source\about
   # 密钥
   PRIVATE_KEY: you guess
   # 国际化
@@ -59,16 +59,16 @@ rbac:
 # 文件储存服务
 file-api:
   # 访问资源地址(Nginx 配置访问资源)
-  localhost: http://192.168.0.10/
+  localhost: http://127.0.0.1/
   # FastDFS [Java]
   fastdfs:
     upload: http://127.0.0.1:8080/api/file/upload
     delete: http://127.0.0.1:8080/api/file/delete/<string:fileName>
   # MinIO
   minio:
-    # 对象存储服务的URL, 使用容器名称访问(Docker部署)
+    # 对象存储服务的URL, 使用容器名称访问
 #    MINIO_ENDPOINT: blog-minio:9000
-    MINIO_ENDPOINT: 127.0.0.1:9000
+    MINIO_ENDPOINT: 192.168.0.10:9000
     # Access key 是唯一标识你的账户的用户ID
     MINIO_ACCESS_KEY: admin
     # Secret key 是你账户的密码
