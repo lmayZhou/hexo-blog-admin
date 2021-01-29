@@ -24,5 +24,8 @@ for image in images:
     file_name = str(uuid.uuid4()) + suffix
     # 存储桶名称
     bucket_name = "hexo-blog"
+    if not minio_storage.bucket_exists(bucket_name):
+        # 如果存储桶不存在，则创建
+        minio_storage.make_bucket(bucket_name)
     minio_storage.fput_object(bucket_name, file_name, image, content_type="image/png", part_size=10485760)
     print("http://192.168.30.180/files/{}/{}".format(bucket_name, file_name))
