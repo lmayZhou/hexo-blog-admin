@@ -10,6 +10,7 @@
 # Date: 2018/7/20 17:35 星期五
 # ----------------------------------------------------------
 import datetime
+from sqlalchemy import text
 from core.models.user import User
 from core.models.role import Role
 from core.app import db
@@ -32,7 +33,7 @@ def menu_page(param):
     """
     try:
         filters = MenuQueryParam.param_dict(param)
-        menus = Menu.query.filter_by(**filters).order_by(param.sort_name + " " + param.sort_order) \
+        menus = Menu.query.filter_by(**filters).order_by(text(param.sort_name + " " + param.sort_order)) \
             .paginate(param.page_number, param.page_size, False)
         rows = []
         for it in menus.items:

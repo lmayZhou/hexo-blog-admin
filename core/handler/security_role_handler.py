@@ -10,6 +10,7 @@
 # Date: 2018/7/20 17:35 星期五
 # ----------------------------------------------------------
 import datetime
+from sqlalchemy import text
 from core.models.user import User
 from core.app import db
 from core import LOG
@@ -34,7 +35,7 @@ def role_page(param):
     """
     try:
         filters = RoleQueryParam.param_dict(param)
-        roles = Role.query.filter_by(**filters).order_by(param.sort_name + " " + param.sort_order) \
+        roles = Role.query.filter_by(**filters).order_by(text(param.sort_name + " " + param.sort_order)) \
             .paginate(param.page_number, param.page_size, False)
         rows = []
         for it in roles.items:

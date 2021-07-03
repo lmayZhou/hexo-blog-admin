@@ -10,6 +10,7 @@
 # Date: 2018/7/20 17:35 星期五
 # ----------------------------------------------------------
 import datetime
+from sqlalchemy import text
 from core.utils.emails import user_add_notification
 from core.utils.security import Security
 from core.models.role import Role
@@ -37,7 +38,7 @@ def user_page(param):
     """
     try:
         filters = UserQueryParam.param_dict(param)
-        users = User.query.filter_by(**filters).order_by(param.sort_name + " " + param.sort_order) \
+        users = User.query.filter_by(**filters).order_by(text(param.sort_name + " " + param.sort_order)) \
             .paginate(param.page_number, param.page_size, False)
         rows = []
         for it in users.items:
