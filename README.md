@@ -117,7 +117,7 @@ pip3 install -r requirements.txt
 # 停止项目
 [root@localhost hexo-blog]# killall -9 uwsgi
 
-# 项目自启(脚本目录根据实际情况)
+# 项目自启(根据实际路径修改: CONFIGFILE=/home/services/hexo-blog-admin/hexo-blog-admin.ini)
 [root@localhost hexo-blog]# cp uwsgi.sh /etc/init.d/
 [root@localhost hexo-blog]# cd /etc/init.d/
 # 可执行命令
