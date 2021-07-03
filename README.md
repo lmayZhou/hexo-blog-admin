@@ -116,6 +116,11 @@ pip3 install -r requirements.txt
 [root@localhost hexo-blog]# ps aux | grep uwsgi
 # 停止项目
 [root@localhost hexo-blog]# killall -9 uwsgi
+
+# 项目自启(脚本目录根据实际情况)
+[root@localhost hexo-blog]# cp uwsgi.sh /etc/init.d/
+[root@localhost hexo-blog]# cd /etc/init.d/
+[root@localhost hexo-blog]# chkconfig --add uwsgi.sh
 ```
 
 ### 参与贡献
