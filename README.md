@@ -120,7 +120,10 @@ pip3 install -r requirements.txt
 # 项目自启(脚本目录根据实际情况)
 [root@localhost hexo-blog]# cp uwsgi.sh /etc/init.d/
 [root@localhost hexo-blog]# cd /etc/init.d/
-[root@localhost hexo-blog]# chkconfig --add uwsgi.sh
+# 可执行命令
+[root@localhost init.d]# chmod 777 uwsgi.sh
+# 添加自启
+[root@localhost init.d]# chkconfig --add uwsgi.sh
 ```
 
 ### 参与贡献
