@@ -127,6 +127,7 @@ pip3 install -r requirements.txt
 ```
 
 ### 参与贡献
+
 1. 2018年04月15日: 初始化项目
 2. 2018年09月05日: 完成项目
 3. 2018年11月11日: 首页添加时间轴
@@ -134,6 +135,7 @@ pip3 install -r requirements.txt
 5. 2021年01月19日: 添加MinIO文件存储服务、Docker部署项目
 
 ### 相关文章
+
 #### 『 Hexo 相关资料』
 - [Hexo 主题模版](https://hexo.io/)
 
